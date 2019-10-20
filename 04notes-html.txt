@@ -1,0 +1,124 @@
+<h1>引入图片</h1>
+
+            <img src="assets/images/baidu.png" alt="baidu">
+
+            <img [src]="picUrl" >
+
+<hr>
+<h1>循环数据 显示数据的索引(key)</h1>
+
+            <ul>
+                <li *ngFor="let item of list;let key=index; ">
+                    <span *ngIf="key==1" class="red">{{key}}-----{{item.title}}</span>
+
+                    <span *ngIf="key!=1">{{key}}-----{{item.title}}</span>
+                </li>
+            </ul>
+
+<h1>条件判断语句 *ngIf</h1>
+
+            <div *ngIf="flag">
+                <img src="assets/images/baidu.png">
+            </div>
+            <div *ngIf="!flag">
+                <img src="assets/images/baidu2.png">
+            </div>
+
+<h1>条件判断语句 *ngSwitch</h1>
+
+            <span [ngSwitch]="orderStatus">
+            <p *ngSwitchCase="1">
+                表示已经支付
+            </p>
+            <p *ngSwitchCase="2">
+                支付并且确认订单
+            </p>
+            <p *ngSwitchCase="3">
+                表示已经发货
+            </p>
+            <p *ngSwitchCase="4">
+                表示已经收货
+            </p>
+            <p *ngSwitchDefault>
+                无效订单
+            </p>
+            </span>
+
+<h1>属性[ngClass],[ngStyle]</h1>
+
+            <div class="red">
+                ngClass演示
+            </div>
+
+            <div [ngClass]="{'blue': true,'red': false}">
+                    ngClass演示
+            </div>
+
+            <div [ngClass]="{'blue': flag,'red': !flag}">
+                    ngClass演示
+            </div>
+
+            <strong>循环数组，让数组的第一个样式为red</strong>
+
+                <li *ngFor="let item of list;let key=index; "[ngClass]="{'red': key==0,'orange': key==1}">
+                        {{key}}-----{{item.title}}
+                </li>
+                <hr>
+            <p style="color:red;">
+                我是一个p标签
+            </p>
+            <p [ngStyle]="{'color': 'blue'}">
+                    我是一个p标签
+            </p>
+            <p [ngStyle]="{'color': attr}">我是一个p标签</p>
+
+
+<h1>管道</h1>
+            {{today | date:'yyyy-mm-dd HH:MM:SS'}}
+
+<h1>事件</h1>
+            <strong>{{title}}</strong>
+
+            <button (click)="run()">执行事件</button>
+
+            <br>
+
+            <button (click)="getDate()">执行方法获取数据</button>
+
+            <br>
+
+            <button (click)="setDate()">执行方法改变里面的数据</button>
+
+            <br>
+
+            <button (click)="runEvent($event)">执行方法获取事件对象</button>
+
+<h1>表单时间 事件对象</h1>
+            <!-- <input type="text" (keydown)="keyDown()">  -->
+            keyDown:
+            <input type="text" (keydown)="keyDown($event)"> 
+            <br>
+            keyUp: 
+            <input type="text" (keyup)="keyUp($event)"> 
+
+<h1>双向数据绑定--MVVM 只是针对表单</h1>
+
+            <input type="text" [(ngModel)]="keywords">
+
+            {{keywords}}
+            <br>
+            <button (click)="changeKeywords()">改变keywords的值</button>
+            <br>
+            <button (click)="getKeywords()">获取keywords的值</button>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
