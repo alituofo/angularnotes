@@ -1,0 +1,47 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-transition',
+  templateUrl: './transition.component.html',
+  styleUrls: ['./transition.component.scss']
+})
+export class TransitionComponent implements OnInit {
+
+  public keyword:string;
+  public historylist:any[]=[];
+  key=false;
+  constructor() { }
+
+  ngOnInit(){
+  }
+  dosearch(){
+
+    if(this.historylist.indexOf(this.keyword)==-1){
+      this.historylist.push(this.keyword);
+    }
+    this.keyword='';
+    console.log(this.keyword)
+
+  }
+
+  delethistory(key){
+    alert(key);
+    this.historylist.splice(key,1);
+  }
+
+  showaside(){
+    var asideDom:any=document.getElementById("aside");
+    if(!this.key){
+      console.log(asideDom.style.transform);
+      asideDom.style.transform='translate(0,0)';
+      this.key=true;
+    }
+    else{
+      console.log(asideDom.style.transform);
+      asideDom.style.transform='translate(100%,0)';
+      this.key=false;
+    }
+    console.log(asideDom.style.tranform);
+  }
+
+}

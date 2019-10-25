@@ -1,0 +1,15 @@
+
+<button (click)="showaside()" >弹出</button>
+
+
+ 
+<div id="aside">
+    <input type="text" [(ngModel)]="keyword">   <button (click)="dosearch()"> 搜索</button>
+
+    <hr>
+
+    <ul>
+        <li *ngFor="let item of historylist;let key = index;">{{item}}-----<button (click)="delethistory(key)">X</button></li>
+    </ul>
+</div> 
+
