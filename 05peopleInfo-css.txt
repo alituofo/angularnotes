@@ -1,0 +1,44 @@
+h2{
+    text-align: center;
+}
+
+.people_list{
+
+    width: 400px;
+    margin: 40px auto;
+
+    padding: 20px;
+    border: 1px solid #eee;
+
+    
+}
+li{
+    height: 50px;
+    line-height: 50px;
+
+    
+}
+.fonm-input{
+
+    width: 300px;
+    height: 40px;
+}
+.submit{
+    width: 100px;
+    height: 30px;
+    float:right;
+    margin-right:50px;
+    margin-top:100px;
+
+}
+/*style.css:
+
+*{
+   padding: 0px;
+    margin: 0px;
+}
+ul,ol{
+    list-style-type: none;
+}
+*/
+

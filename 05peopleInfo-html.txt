@@ -1,0 +1,48 @@
+//引入表单相关的模块 才可以用双向数据绑定
+//import { FormsModule } from '@angular/forms';
+<h2>人员登记系统</h2>
+
+<div class="people_list">
+    <ul>
+        <li>
+            姓名：
+            <input type="text" id="username" [(ngModel)]="peopleInfo.username" value="fonm-input">
+        </li>
+        <li>
+            性别：
+            <input type="radio" value="1" id="sex1" [(ngModel)]="peopleInfo.sex"><label for="sex1">男</label>&nbsp;
+            <input type="radio" value="2" id="sex2" [(ngModel)]="peopleInfo.sex"><label for="sex2">女</label>
+        </li>
+        <li>
+            城市：
+            <select name="city" id="city" [(ngModel)]="peopleInfo.city">
+                <option [value]="item" *ngFor="let item of peopleInfo.citylist">{{item}}</option>
+            </select>
+        </li>
+        <li>
+            爱好：
+            <span *ngFor="let item of peopleInfo.hobby;let key = index">
+                <input type="checkbox" [id]="'check'+key" [(ngModel)]="item.checked">
+                <label for="'check'+key">{{item.title}}</label>
+                &nbsp;&nbsp;
+            </span>
+        </li>
+        <li>
+            备注：
+            <textarea name="mark" id="mark" cols="30" rows="10" [(ngModel)]="peopleInfo.mark"></textarea>
+        </li>
+    </ul>
+
+    <br>
+    <button (click)="doSubmit()" class="submit">获取表单的内容</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <pre>
+
+        {{peopleInfo | json}}
+    </pre>
+</div>
