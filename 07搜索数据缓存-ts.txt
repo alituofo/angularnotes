@@ -1,0 +1,77 @@
+/*
+1.ng g service services/storage
+
+2.在 app.module.ts 中引入创建的服务，并声明
+
+import {  StorageService} from './services/storage.service';
+
+providers: [StorageService]
+
+3.在用到的组建里
+        //引入服务
+        import {  StorageService} from '../../services/storage.service';
+        //初始化
+        constructor(public storage:StorageService) {
+
+            let s = this.storage.get();
+            console.log(s);  
+          }
+
+*/
+
+import { Component, OnInit } from '@angular/core';
+//引入服务
+import {  StorageService} from '../../services/storage.service';
+
+
+/*
+不推荐 
+  var storage=new StorageService();
+  console.log(storage);
+ */
+
+@Component({
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss']
+})
+export class SearchComponent implements OnInit {
+
+  public keyword:string;
+  public historylist:any[]=[];
+
+  constructor(public storage:StorageService) {
+ 
+  }
+
+  ngOnInit() {
+
+    console.log('页面刷新会触发这个生命周期函数');
+
+    var searchlist:any = this.storage.get('searchlist');
+    if(searchlist){
+      this.historylist=searchlist;
+    }
+  }
+  dosearch(){
+
+    if(this.historylist.indexOf(this.keyword)==-1){
+      this.historylist.push(this.keyword);
+
+      this.storage.set('searchlist',this.historylist); 
+
+    }
+
+    this.keyword='';
+    console.log(this.keyword)
+
+  }
+
+  delethistory(key){
+
+
+    this.historylist.splice(key,1);
+    this.storage.set('searchlist',this.historylist);
+
+  }
+}

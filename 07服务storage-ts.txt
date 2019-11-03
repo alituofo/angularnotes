@@ -1,0 +1,30 @@
+import { Injectable } from '@angular/core';
+import { stringify } from 'querystring';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class StorageService {
+
+  constructor() { }
+
+  set(key:string,value:any){
+
+    localStorage.setItem(key,JSON.stringify(value));
+
+  }
+
+  get(key){
+
+    //return 'this is service';
+
+    return JSON.parse(localStorage.getItem(key));
+  }
+
+  remove(key){
+    localStorage.removeItem(key);
+  }
+
+
+
+}

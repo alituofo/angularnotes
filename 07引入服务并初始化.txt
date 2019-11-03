@@ -1,0 +1,20 @@
+/*
+1.ng g service services/storage
+
+2.在 app.module.ts 中引入创建的服务，并声明
+
+import {  StorageService} from './services/storage.service';
+
+providers: [StorageService]
+
+3.在用到的组建里
+        //引入服务
+        import {  StorageService} from '../../services/storage.service';
+        //初始化
+        constructor(public storage:StorageService) {
+
+            let s = this.storage.get();
+            console.log(s);  
+          }
+
+*/
