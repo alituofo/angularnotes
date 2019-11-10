@@ -1,0 +1,23 @@
+父子组件中通过Output调用子组件的数据、方法
+
+1.子组件引入Output 和 EventEmitter
+	import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+
+2.子组件中失利话 EventEmitter
+	@Output() private outer=new EventEmitter<string>();
+	//用EventEmitter 和 Output 装饰器配合使用 <string>指定类型变量
+
+3.子组件通过EventEmitter 对象outer实例广播数据
+	sendParent(){
+		//alert('zhixing')
+		this.outer.emit('msg from child');
+	}
+
+4.父组件调用子组件的时候，定义接收事件，outer就是子组件的EventEmitter 对象outer
+	<app-header> (outer)="runParent($event)"></app-header>
+
+5.父组件接受到数据会调用自己的runParent方法，这个时候就能拿到子组件的数据
+	//接受子组件传递过来的数据
+	runParent(msg:string){
+		alert(msg);
+	}

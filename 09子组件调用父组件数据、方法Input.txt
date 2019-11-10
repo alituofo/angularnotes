@@ -1,0 +1,99 @@
+/*【home.html】======================
+<app-header [title]='title' [msg]='msg' [run]='run' [home]='this'></app-header>
+
+<br>
+<hr>
+<br>
+
+<div>我是首页组件</div>
+*/
+/*【home.ts】======================
+	/*
+	1.在调用子组件的时候给它传入一个值
+
+ 	 <app-header [title]='title'></app-header>
+	
+	2.在子组件里接收父组件传过来的数据    <header>{{title}}</header>
+	  import { Component, OnInit, Input } from '@angular/core';
+
+	  @Input() title:any;
+
+	  父组件的数据    public title:string="首页组件标题";
+
+	*/
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
+})
+export class HomeComponent implements OnInit {
+
+  public title:string="首页组件标题";
+
+  public msg:string='我是父组件的msg';
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  run(){
+    alert('我是父组件的run方法');
+  }
+
+}
+*/
+
+
+/*【header.html】======================
+<header>{{title}}--{{msg}}</header>
+
+
+<br>
+
+<button (click)="getParentMsg()">子组件里执行父组件的msg</button>
+
+<br>
+
+<button (click)="getParentRun()">子组件里执行父组件的run方法</button>
+*/
+
+/*【header.ts】======================
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss']
+})
+export class HeaderComponent implements OnInit {
+
+  @Input() title:any;
+  @Input() msg:any;
+  @Input() run:any;
+  @Input() home:any;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  getParentMsg(){
+    //获取父组件的数据
+    alert(this.msg);
+  }
+
+  getParentRun(){
+    //执行父组件的run方法
+    // this.run();
+
+    //把父组件的整个实例传给子组件
+    alert(this.home.msg);
+    this.home.run();
+
+  }
+}
+
+*/

@@ -1,0 +1,48 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
+})
+export class HomeComponent implements OnInit {
+  public flag:boolean=true;
+
+  constructor() { }
+
+  ngOnInit() {
+    //组件和指令初始化完成 并不是真正DOM加载完成
+
+    let oBox:any=document.getElementById('box');
+    console.log(oBox.innerHTML);
+    oBox.style.color="red";
+
+    //获取不到DOM节点
+
+    // let oBox1:any=document.getElementById('box1');
+
+    // console.log(oBox1.innerHTML);
+    // oBox1.style.color="blue";
+  }
+  //视图加载完成以后触发的方法 DOM加完成（建议把DOM放在这里面）
+  ngAfterViewInit(): void {
+    let oBox1:any=document.getElementById('box1');
+
+    console.log(oBox1.innerHTML);
+    oBox1.style.color="blue";
+
+  }
+}
+
+/*
+<h2>这是一个home组件---DOM操作演示</h2>
+
+<div id = "box">
+    this is a box
+</div>
+
+<div id = "box1" *ngIf="flag">
+    this is box1
+</div>
+
+*/
